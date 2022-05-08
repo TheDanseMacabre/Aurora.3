@@ -5809,6 +5809,7 @@
 	},
 /obj/item/storage/box/trackingslugs,
 /obj/effect/decal/warning_stripes,
+/obj/item/storage/box/shotgunshells,
 /turf/simulated/floor/tiled/dark,
 /area/security/armory)
 "din" = (
@@ -6120,13 +6121,13 @@
 /area/chapel/office)
 "dqy" = (
 /obj/structure/closet/secure_closet/guncabinet{
-	name = "Weaponry (.45 Pistol)"
+	name = "Weaponry (Pistols)"
 	},
 /obj/item/gun/projectile/sec,
 /obj/item/gun/projectile/sec,
-/obj/item/gun/projectile/sec,
-/obj/item/gun/projectile/sec,
 /obj/effect/decal/warning_stripes,
+/obj/item/gun/projectile/automatic/wt550,
+/obj/item/gun/projectile/automatic/wt550,
 /turf/simulated/floor/tiled/dark,
 /area/security/armory)
 "drk" = (
@@ -9216,8 +9217,8 @@
 	department = "Kitchen";
 	departmentType = 1;
 	name = "Kitchen Requests Console";
-	pixel_y = -2;
-	pixel_x = -4
+	pixel_x = -4;
+	pixel_y = -2
 	},
 /turf/simulated/wall,
 /area/crew_quarters/kitchen/freezer)
@@ -18980,7 +18981,7 @@
 /area/medical/exam)
 "kCr" = (
 /obj/structure/closet/secure_closet/guncabinet{
-	name = "Ammunition (.45)"
+	name = "Ammunition (Pistols)"
 	},
 /obj/effect/decal/warning_stripes,
 /obj/item/ammo_magazine/c45m/rubber,
@@ -18989,15 +18990,16 @@
 /obj/item/ammo_magazine/c45m/rubber,
 /obj/item/ammo_magazine/c45m/rubber,
 /obj/item/ammo_magazine/c45m/rubber,
-/obj/item/ammo_magazine/c45m/rubber,
-/obj/item/ammo_magazine/c45m/rubber,
-/obj/item/ammo_magazine/c45m/rubber,
 /obj/item/ammo_magazine/c45m,
 /obj/item/ammo_magazine/c45m,
 /obj/item/ammo_magazine/c45m,
 /obj/item/ammo_magazine/c45m,
-/obj/item/ammo_magazine/c45m,
-/obj/item/ammo_magazine/c45m,
+/obj/item/ammo_magazine/mc9mmt,
+/obj/item/ammo_magazine/mc9mmt,
+/obj/item/ammo_magazine/mc9mmt/rubber,
+/obj/item/ammo_magazine/mc9mmt/rubber,
+/obj/item/ammo_magazine/mc9mmt/rubber,
+/obj/item/ammo_magazine/mc9mmt/rubber,
 /turf/simulated/floor/tiled/dark,
 /area/security/armory)
 "kCV" = (
@@ -30792,8 +30794,8 @@
 /obj/machinery/door/firedoor,
 /obj/effect/floor_decal/corner/grey/diagonal,
 /obj/machinery/light_switch{
-	pixel_y = 7;
-	pixel_x = -3
+	pixel_x = -3;
+	pixel_y = 7
 	},
 /obj/machinery/button/remote/airlock{
 	id = "dinerbolt";
@@ -34673,8 +34675,8 @@
 /area/server)
 "thY" = (
 /obj/machinery/orderterminal{
-	pixel_y = -3;
-	pixel_x = -30
+	pixel_x = -30;
+	pixel_y = -3
 	},
 /turf/simulated/floor/tiled/dark,
 /area/crew_quarters/kitchen)
