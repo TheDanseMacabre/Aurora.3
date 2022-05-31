@@ -1051,10 +1051,12 @@
 
 	if(rolled_down < 0)
 		if("[worn_state]_d[contained_sprite ? "_un" : "_s"]" in icon_states(under_icon))
+		else if ("[worn_state]_d[contained_sprite ? "_s" : "_un"]" in icon_states(under_icon))
 			rolled_down = 0
 			verbs += /obj/item/clothing/under/proc/rollsuit
 	if(rolled_sleeves < 0)
 		if("[worn_state]_r[contained_sprite ? "_un" : "_s"]" in icon_states(under_icon))
+		else if ("[worn_state]_d[contained_sprite ? "_s" : "_un"]" in icon_states(under_icon))
 			rolled_sleeves = 0
 			verbs += /obj/item/clothing/under/proc/rollsleeves
 
