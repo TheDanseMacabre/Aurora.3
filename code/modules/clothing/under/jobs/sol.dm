@@ -5,7 +5,7 @@
 	icon = 'icons/obj/sol_uniform.dmi'
 	icon_state = "sol_uniform"
 	item_state = "sol_uniform"
-	contained_sprite = 1
+	contained_sprite: TRUE
 	armor = list(
 		melee = ARMOR_MELEE_SMALL,
 		bullet = ARMOR_BALLISTIC_MINOR,
@@ -18,7 +18,7 @@
 	icon = 'icons/obj/sol_uniform.dmi'
 	icon_state = "marine_fatigue"
 	item_state = "marine_fatigue"
-	contained_sprite = 1
+	contained_sprite: TRUE
 
 /obj/item/clothing/under/rank/service //navy personnel service unniform
 	name = "sol navy service uniform"
@@ -26,7 +26,7 @@
 	icon = 'icons/obj/sol_uniform.dmi'
 	icon_state = "whiteservice"
 	item_state = "whiteservice"
-	contained_sprite = 1
+	contained_sprite: TRUE
 
 /obj/item/clothing/under/rank/service/marine //sol marine service unniform
 	name = "sol marine service uniform"
@@ -34,7 +34,7 @@
 	icon = 'icons/obj/sol_uniform.dmi'
 	icon_state = "tanutility"
 	item_state = "tanutility"
-	contained_sprite = 1
+	contained_sprite: TRUE
 
 /obj/item/clothing/under/rank/dress //navy personnel dress unniform
 	name = "sol navy dress uniform"
@@ -42,7 +42,7 @@
 	icon = 'icons/obj/sol_uniform.dmi'
 	icon_state = "sailor"
 	item_state = "sailor"
-	contained_sprite = 1
+	contained_sprite: TRUE
 
 /obj/item/clothing/under/rank/dress/marine //sol marine dress unniform
 	name = "sol marine dress uniform"
@@ -50,7 +50,7 @@
 	icon = 'icons/obj/sol_uniform.dmi'
 	icon_state = "mahreendress"
 	item_state = "mahreendress"
-	contained_sprite = 1
+	contained_sprite: TRUE
 
 /obj/item/clothing/under/rank/dress/subofficer //sol marine officer dress unniform
 	name = "sol navy junior officer uniform"
@@ -58,7 +58,7 @@
 	icon = 'icons/obj/sol_uniform.dmi'
 	icon_state = "subdress"
 	item_state = "subdress"
-	contained_sprite = 1
+	contained_sprite: TRUE
 
 /obj/item/clothing/under/rank/dress/officer //sol marine officer dress unniform
 	name = "sol navy senior officer uniform"
@@ -66,7 +66,7 @@
 	icon = 'icons/obj/sol_uniform.dmi'
 	icon_state = "dress"
 	item_state = "dress"
-	contained_sprite = 1
+	contained_sprite: TRUE
 
 /obj/item/clothing/under/rank/dress/admiral //admiral uniform
 	name = "sol navy admiral uniform"
@@ -74,4 +74,4 @@
 	icon = 'icons/obj/sol_uniform.dmi'
 	icon_state = "admiral_uniform"
 	item_state = "admiral_uniform"
-	contained_sprite = 1
+	contained_sprite: TRUE
