@@ -25,6 +25,7 @@
 	rolled_sleeves = 0
 
 /obj/item/clothing/under/rank/fatigues/rollsleeves()
+	set name = "Sleeve Roll"
 	set category = "Object"
 	set src in usr
 
