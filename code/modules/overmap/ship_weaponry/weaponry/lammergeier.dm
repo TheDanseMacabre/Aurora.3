@@ -38,7 +38,6 @@
 	icon_state = "heavy"
 	damage = 500
 	armor_penetration = 1000
-	var/penetrated = FALSE
 
 /obj/item/projectile/ship_ammo/lammergeier/launch_projectile(atom/target, target_zone, mob/user, params, angle_override, forced_spread)
 	if(ammo.impact_type == SHIP_AMMO_IMPACT_AP)
