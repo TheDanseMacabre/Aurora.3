@@ -628,6 +628,16 @@
 /obj/effect/floor_decal/corner/red{
 	dir = 9
 	},
+/obj/item/clothing/suit/storage/hazardvest/red,
+/obj/item/clothing/suit/storage/hazardvest/red,
+/obj/item/clothing/head/hardhat/red,
+/obj/item/clothing/head/hardhat/red,
+/obj/item/storage/belt/utility/full,
+/obj/item/storage/belt/utility/very_full,
+/obj/item/clothing/accessory/storage/pouches/brown,
+/obj/item/clothing/accessory/storage/pouches/brown,
+/obj/item/clothing/accessory/storage/brown_vest,
+/obj/item/clothing/accessory/storage/brown_vest,
 /turf/simulated/floor/tiled/dark,
 /area/space)
 "cHM" = (
@@ -798,7 +808,6 @@
 /obj/effect/floor_decal/corner/orange{
 	dir = 5
 	},
-/obj/machinery/autolathe,
 /turf/simulated/floor/tiled/dark,
 /area/space)
 "dqJ" = (
@@ -828,6 +837,12 @@
 "dvU" = (
 /obj/structure/table/rack,
 /obj/effect/floor_decal/industrial/outline/red,
+/obj/item/ship_ammunition/francisca,
+/obj/item/ship_ammunition/francisca,
+/obj/item/ship_ammunition/francisca,
+/obj/item/ship_ammunition/francisca,
+/obj/item/ship_ammunition/francisca,
+/obj/item/ship_ammunition/francisca,
 /turf/simulated/floor/tiled/dark,
 /area/space)
 "dEo" = (
@@ -1740,6 +1755,14 @@
 	},
 /obj/item/storage/belt/security/full,
 /obj/item/storage/belt/security/full,
+/obj/item/storage/box/zipties,
+/obj/item/storage/box/zipties,
+/obj/item/storage/box/smokebombs,
+/obj/item/storage/box/flashbangs,
+/obj/item/gun/energy/taser,
+/obj/item/gun/energy/taser,
+/obj/item/melee/baton/loaded,
+/obj/item/melee/baton/loaded,
 /turf/simulated/floor/tiled/dark,
 /area/space)
 "hBd" = (
@@ -2306,6 +2329,12 @@
 	},
 /turf/simulated/floor/tiled/dark,
 /area/space)
+"kni" = (
+/obj/structure/ship_weapon_dummy{
+	is_barrel = 1
+	},
+/turf/template_noop,
+/area/space)
 "kpq" = (
 /obj/structure/bed/stool/chair/office/bridge/generic,
 /obj/effect/floor_decal/corner/light{
@@ -2432,7 +2461,9 @@
 /turf/simulated/floor/tiled/dark,
 /area/space)
 "kPs" = (
-/obj/structure/viewport/zavod,
+/obj/structure/window/reinforced{
+	dir = 10
+	},
 /turf/simulated/floor/carpet/rubber,
 /area/space)
 "kRG" = (
@@ -2705,6 +2736,11 @@
 	name = "House Zhao sash"
 	},
 /obj/effect/floor_decal/corner/red,
+/obj/item/clothing/head/helmet/pilot,
+/obj/item/clothing/accessory/storage/pouches/black,
+/obj/item/clothing/accessory/storage/pouches/black,
+/obj/item/clothing/accessory/holster/hip/brown,
+/obj/item/clothing/accessory/holster/hip/brown,
 /turf/simulated/floor/tiled/dark,
 /area/space)
 "lLO" = (
@@ -2750,6 +2786,17 @@
 	dir = 8
 	},
 /turf/simulated/floor/marble/dark,
+/area/space)
+"lYd" = (
+/obj/structure/table/rack,
+/obj/effect/floor_decal/industrial/outline/red,
+/obj/item/ship_ammunition/francisca/ap,
+/obj/item/ship_ammunition/francisca/ap,
+/obj/item/ship_ammunition/francisca/ap,
+/obj/item/ship_ammunition/francisca/ap,
+/obj/item/ship_ammunition/francisca/ap,
+/obj/item/ship_ammunition/francisca/ap,
+/turf/simulated/floor/tiled/dark,
 /area/space)
 "lYy" = (
 /obj/structure/table/rack,
@@ -3691,9 +3738,7 @@
 /turf/template_noop,
 /area/space)
 "pRO" = (
-/obj/machinery/ammunition_loader/longbow{
-	weapon_id = "Longbow Cannon"
-	},
+/obj/machinery/ammunition_loader/lammergeier,
 /turf/simulated/floor/carpet/rubber,
 /area/space)
 "pUo" = (
@@ -3762,6 +3807,9 @@
 /obj/item/stack/material/steel/full,
 /obj/item/stack/material/glass/full,
 /obj/machinery/firealarm/north,
+/obj/item/stack/material/steel/full,
+/obj/item/stack/material/glass/reinforced/full,
+/obj/item/stack/material/plasteel/full,
 /turf/simulated/floor/tiled/dark,
 /area/space)
 "qiY" = (
@@ -4291,6 +4339,14 @@
 /obj/machinery/firealarm/west,
 /turf/simulated/floor/tiled/dark,
 /area/space)
+"taJ" = (
+/obj/structure/ship_weapon_dummy,
+/obj/machinery/ship_weapon/lammergeier{
+	pixel_x = -64;
+	pixel_y = -320
+	},
+/turf/simulated/floor/reinforced/airless,
+/area/space)
 "tcL" = (
 /obj/machinery/door/firedoor/noid,
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
@@ -4746,6 +4802,13 @@
 	dir = 4
 	},
 /obj/effect/floor_decal/industrial/outline/red,
+/obj/item/ship_ammunition/lammergeier_shell/ap,
+/obj/item/ship_ammunition/lammergeier_shell/ap{
+	pixel_y = 5
+	},
+/obj/item/ship_ammunition/lammergeier_shell/ap{
+	pixel_y = 10
+	},
 /turf/simulated/floor/tiled/dark,
 /area/space)
 "uNN" = (
@@ -5224,6 +5287,12 @@
 /obj/effect/floor_decal/corner/red{
 	dir = 9
 	},
+/obj/item/storage/belt/medical/first_responder,
+/obj/item/storage/belt/medical,
+/obj/item/clothing/accessory/storage/pouches/white,
+/obj/item/clothing/accessory/storage/pouches/white,
+/obj/item/clothing/accessory/storage/white_vest,
+/obj/item/clothing/accessory/storage/white_vest,
 /turf/simulated/floor/tiled/dark,
 /area/space)
 "xvM" = (
@@ -5285,6 +5354,13 @@
 	icon_state = "rwindow"
 	},
 /obj/effect/floor_decal/industrial/outline/red,
+/obj/item/ship_ammunition/lammergeier_shell,
+/obj/item/ship_ammunition/lammergeier_shell{
+	pixel_y = 5
+	},
+/obj/item/ship_ammunition/lammergeier_shell{
+	pixel_y = 10
+	},
 /turf/simulated/floor/tiled/dark,
 /area/space)
 "xQS" = (
@@ -29934,7 +30010,7 @@ epB
 epB
 epB
 epB
-epB
+kni
 xRX
 xRX
 xRX
@@ -30182,7 +30258,7 @@ xPN
 uGj
 buM
 szY
-irX
+taJ
 irX
 irX
 epB
@@ -44058,7 +44134,7 @@ sNA
 ntt
 hTj
 mEE
-dvU
+lYd
 ntt
 nva
 xFB
