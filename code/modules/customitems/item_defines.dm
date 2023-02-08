@@ -58,18 +58,6 @@ All custom items with worn sprites must follow the contained sprite system: http
 	slot_flags = SLOT_MASK | SLOT_TIE
 
 
-/obj/item/clothing/accessory/badge/fluff/caleb_badge //Worn Badge - Caleb Greene - notmegatron
-	name = "worn badge"
-	desc = "A simple gold badge denoting the wearer as Head of Security. It is worn and dulled with age, but the name, \"Caleb Greene\", is still clearly legible."
-	icon = 'icons/obj/custom_items/caleb_badge.dmi'
-	icon_override = 'icons/obj/custom_items/caleb_badge.dmi'
-	item_state = "caleb_badge"
-	icon_state = "caleb_badge"
-	stored_name = "Caleb Greene"
-	badge_string = "NOS Apollo Head of Security"
-	contained_sprite = TRUE
-
-
 /obj/item/clothing/under/fluff/ana_uniform //Retired Uniform - Ana Roh'hi'tin - suethecake
 	name = "retired uniform"
 	desc = "A silken blouse paired with dark-colored slacks. It has the words \"Chief Investigator\" embroidered into the shoulder bar."
@@ -87,6 +75,7 @@ All custom items with worn sprites must follow the contained sprite system: http
 	icon_state = "ana_jacket"
 	item_state = "ana_jacket"
 	contained_sprite = TRUE
+	body_parts_covered = UPPER_TORSO | ARMS
 
 /obj/item/clothing/accessory/badge/old/fluff/ana_badge //Faded Badge - Ana Roh'hi'tin - suethecake
 	name = "faded badge"
@@ -196,8 +185,8 @@ All custom items with worn sprites must follow the contained sprite system: http
 /obj/item/reagent_containers/food/drinks/teapot/fluff/brianne_teapot //Ceramic Teapot - Sean Brianne - zelmana
 	name = "ceramic teapot"
 	desc = "A blue ceramic teapot, gilded with the abbreviation for NanoTrasen."
-	icon = 'icons/obj/custom_items/brianne_teapot.dmi'
-	icon_override = 'icons/obj/custom_items/brianne_teapot.dmi'
+	icon = 'icons/obj/custom_items/brianne_items.dmi'
+	icon_override = 'icons/obj/custom_items/brianne_items.dmi'
 	icon_state = "brianne_teapot"
 
 
@@ -325,17 +314,6 @@ All custom items with worn sprites must follow the contained sprite system: http
 	icon = 'icons/obj/custom_items/zilosnish_items.dmi'
 	icon_override = 'icons/obj/custom_items/zilosnish_items.dmi'
 	icon_state = "zilosnish_pen"
-
-
-/obj/item/clothing/head/fluff/qorja_headband //Rebellious Headband - Q'orja Sak'ha - fortport
-	name = "rebellious headband"
-	desc = "A comfortable headband made from a long, soft cloth that's tied into a knot in the back. It is a bright shade of red, slipped through a decorative brass plate. \
-	Upon the metal is an engraving of the People's Republic of Adhomai's insignia, as if straight from their flag."
-	icon = 'icons/obj/custom_items/qorja_headband.dmi'
-	icon_override = 'icons/obj/custom_items/qorja_headband.dmi'
-	icon_state = "qorja_headband"
-	item_state = "qorja_headband"
-	contained_sprite = TRUE
 
 
 /obj/item/clothing/wrists/watch/fluff/rex_watch //Engraved Wristwatch - Rex Winters - tailson
@@ -636,9 +614,9 @@ All custom items with worn sprites must follow the contained sprite system: http
 	else
 		icon_state = "stand"
 
-/obj/item/fluff/tokash_spear/attack_self(var/mob/user)
+/obj/item/fluff/tokash_spear/attack_hand(var/mob/user)
 	if(has_spear)
-		to_chat(user, "<span class='notice'>You remove the spearhead from \the [src].</span>")
+		to_chat(user, SPAN_NOTICE("You remove the spearhead from \the [src]."))
 		var/obj/item/fluff/tokash_spearhead/piece = new(get_turf(user))
 		user.put_in_hands(piece)
 		has_spear = FALSE
@@ -654,6 +632,23 @@ All custom items with worn sprites must follow the contained sprite system: http
 	else
 		..()
 
+/obj/item/fluff/tokash_spear/MouseDrop(mob/user)
+	if((user == usr && (!(usr.restrained()) && (!(usr.stat) && (usr.contents.Find(src) || in_range(src, usr))))))
+		if(!istype(usr, /mob/living/carbon/slime) && !istype(usr, /mob/living/simple_animal))
+			if(!usr.get_active_hand()) // If active hand is empty.
+				var/mob/living/carbon/human/H = user
+				var/obj/item/organ/external/temp = H.organs_by_name[BP_R_HAND]
+
+				if(H.hand)
+					temp = H.organs_by_name[BP_L_HAND]
+				if(temp && !temp.is_usable())
+					to_chat(user, SPAN_NOTICE("You try to move your [temp.name], but cannot!"))
+					return
+
+				to_chat(user, SPAN_NOTICE("You pick up \the [src]."))
+				user.put_in_hands(src)
+	return
+
 /obj/item/fluff/tokash_spearhead
 	name = "ancestral spearhead"
 	desc = "An aged and worn spearhead. It seems to be made of bronze or composite metal."
@@ -661,7 +656,6 @@ All custom items with worn sprites must follow the contained sprite system: http
 	icon_override = 'icons/obj/custom_items/tokash_spear.dmi'
 	icon_state = "spearhead"
 	w_class = ITEMSIZE_SMALL
-
 
 /obj/item/clothing/suit/storage/hooded/wintercoat/fluff/naomi_coat //Reishi Queen Winter Coat - Naomi Marlowe - smifboy78
 	name = "reishi queen winter coat"
@@ -1162,32 +1156,6 @@ All custom items with worn sprites must follow the contained sprite system: http
 	item_state = "akila_jacket"
 	contained_sprite = TRUE
 
-
-/obj/structure/sign/flag/red_coalition
-	name = "Red Coalition flag"
-	desc = "A high-quality copy of an original Red Coalition banner. This variant on the standard was flown by the Zelazny arcology during the Martian World War, Zelazny's origins as a \
-	mining colony represented in the center by the alchemical symbol for iron."
-	icon_state = "redcoalition"
-
-/obj/structure/sign/flag/red_coalition/left
-	icon_state = "redcoalition_l"
-
-/obj/structure/sign/flag/red_coalition/right
-	icon_state = "redcoalition_r"
-
-/obj/item/flag/fluff/nikita_flag //Red Coalition Banner - Nikita Yutani - sycmos
-	name = "Red Coalition flag"
-	icon = 'icons/obj/custom_items/nikita_flag.dmi'
-	icon_override = 'icons/obj/custom_items/nikita_flag.dmi'
-	icon_state = "nikita_flag"
-	desc = "A high-quality copy of an original Red Coalition banner. This variant on the standard was flown by the Zelazny arcology during the Martian World War, Zelazny's origins as a \
-	mining colony represented in the center by the alchemical symbol for iron."
-	flag_path = "redcoalition"
-
-/obj/item/flag/fluff/nikita_flag/l
-	flag_size = 1
-
-
 /obj/item/voidsuit_modkit/fluff/rajka_suit
 	name = "HEV-3 voidsuit kit"
 	desc = "A simple cardboard box containing the requisition forms, permits, and decal kits for a HEV-3 voidsuit."
@@ -1250,7 +1218,7 @@ All custom items with worn sprites must follow the contained sprite system: http
 
 /obj/item/fluff/holoconsole/attack_self(mob/user)
 	if(on && !(world.time < last_sound + sound_delay))
-		playsound(loc, /decl/sound_category/quick_arcade, 60)
+		playsound(loc, /singleton/sound_category/quick_arcade, 60)
 		last_sound = world.time
 		return
 	return ..()
@@ -1337,7 +1305,7 @@ All custom items with worn sprites must follow the contained sprite system: http
 
 	var/obj/item/fluff/holoconsole/H = parent_console.resolve()
 	if(H?.on)
-		playsound(H.loc, /decl/sound_category/quick_arcade, 60)
+		playsound(H.loc, /singleton/sound_category/quick_arcade, 60)
 		last_sound = world.time
 
 /obj/item/fluff/holoconsole_controller/r // Holoconsole - Qoi Liuiq - shestrying
@@ -1949,19 +1917,19 @@ All custom items with worn sprites must follow the contained sprite system: http
 	desc = "A piece of handmade taffy, rolled up in a cute spiral!"
 	icon = 'icons/obj/custom_items/bells_zora_items.dmi'
 	icon_state = "orange_taffy"
-	reagents_to_add = list(/decl/reagent/nutriment = 3)
-	reagent_data = list(/decl/reagent/nutriment = list("bittersweetness, insect meat and regret" = 1))
+	reagents_to_add = list(/singleton/reagent/nutriment = 3)
+	reagent_data = list(/singleton/reagent/nutriment = list("bittersweetness, insect meat and regret" = 1))
 	bitesize = 1
 
 /obj/item/reagent_containers/food/snacks/fluff/taffy/pink
 	name = "pink taffy"
 	icon_state = "pink_taffy"
-	reagent_data = list(/decl/reagent/nutriment = list("sweetness and a hint of strawberry" = 1))
+	reagent_data = list(/singleton/reagent/nutriment = list("sweetness and a hint of strawberry" = 1))
 
 /obj/item/reagent_containers/food/snacks/fluff/taffy/blue
 	name = "blue taffy"
 	icon_state = "blue_taffy"
-	reagent_data = list(/decl/reagent/nutriment = list("salty-sweet, tangy taffy" = 1))
+	reagent_data = list(/singleton/reagent/nutriment = list("salty-sweet, tangy taffy" = 1))
 
 
 /obj/item/clothing/suit/storage/fluff/aheke_coat //Hengsha Thermal Coat - Aheke Han'san - hawkington
@@ -2007,19 +1975,30 @@ All custom items with worn sprites must follow the contained sprite system: http
 	contained_sprite = TRUE
 
 
-/obj/item/deck/tarot/nralakk/fluff/ielia_tarot //Starfinder - Ielia Aliori-Quis'Naala - shestrying
+/obj/item/fluff/ielia_tarot //Starfinder - Ielia Aliori-Quis'Naala - shestrying
 	name = "starfinder"
 	desc = "A small, bronze ball. It is heavy in the hand and seems to have no switches or buttons on it. "
 	icon = 'icons/obj/custom_items/ielia_tarot.dmi'
 	icon_override = 'icons/obj/custom_items/ielia_tarot.dmi'
 	icon_state = "ielia_tarot"
 	contained_sprite = TRUE
+	w_class = ITEMSIZE_SMALL
+	var/list/possible_cards = list("Island","Hatching Egg","Star Chanter","Jiu'x'klua","Stormcloud","Gnarled Tree","Poet","Bloated Toad","Void","Qu'Poxii","Fisher","Mountain","Sraso","Nioh")
 	var/activated = FALSE
 	var/first_card
 	var/second_card
 	var/third_card
 
-/obj/item/deck/tarot/nralakk/fluff/ielia_tarot/verb/start_starfinder()
+/obj/item/fluff/ielia_tarot/attack_self(var/mob/user)
+	if(activated)
+		reset_starfinder()
+	else
+		start_starfinder()
+
+/obj/item/fluff/ielia_tarot/AltClick(mob/user)
+	attack_self(user)
+
+/obj/item/fluff/ielia_tarot/verb/start_starfinder()
 	set name = "Start the Starfinder"
 	set category = "Object"
 	set src in view(1)
@@ -2028,11 +2007,6 @@ All custom items with worn sprites must follow the contained sprite system: http
 		return
 
 	if(use_check_and_message(usr, USE_DISALLOW_SILICONS))
-		return
-	if(!iscarbon(usr))
-		to_chat(usr, SPAN_WARNING("Your simple form can't operate \the [src]."))
-	if(!cards.len)
-		to_chat(usr, SPAN_WARNING("There are no cards in \the [src]."))
 		return
 
 	first_card = null
@@ -2048,25 +2022,25 @@ All custom items with worn sprites must follow the contained sprite system: http
 
 	icon_state = "card_spin"
 	add_overlay("card_spin_fx")
-	addtimer(CALLBACK(src, .proc/finish_selection, usr), 3 SECONDS)
+	addtimer(CALLBACK(src, PROC_REF(finish_selection), usr), 3 SECONDS)
 
-/obj/item/deck/tarot/nralakk/fluff/ielia_tarot/proc/finish_selection(var/mob/user)
+/obj/item/fluff/ielia_tarot/examine(mob/user)
+	if(..(user, 1))
+		if(first_card && second_card && third_card)
+			to_chat(user, "The following constellations are displayed on the starfinder: [first_card], [second_card], and [third_card].")
+
+/obj/item/fluff/ielia_tarot/proc/finish_selection(var/mob/user)
 	cut_overlays()
 	flick("card_spin_stop",src)
 	icon_state = "ielia_tarot_on"
 	for(var/i = 1 to 3)
-		var/obj/item/hand/H = new(get_turf(src))
-		H.cards += cards[1]
-		cards -= cards[1]
-		H.concealed = 1
-		var/datum/playingcard/P = cards[1]
-		H.update_icon()
+		var/P = pick(possible_cards)
 		if(!first_card)
-			first_card = "[P.name]"
+			first_card = P
 		else if(first_card && !second_card)
-			second_card = "[P.name]"
+			second_card = P
 		else if(first_card && second_card)
-			third_card = "[P.name]"
+			third_card = P
 
 	cut_overlays()
 	add_overlay("card_display_fx")
@@ -2083,7 +2057,32 @@ All custom items with worn sprites must follow the contained sprite system: http
 	third_card_overlay.pixel_x = 8
 	add_overlay(third_card_overlay)
 
-	addtimer(CALLBACK(src, .proc/reset_starfinder), 15 SECONDS)
-
-/obj/item/deck/tarot/nralakk/fluff/ielia_tarot/proc/reset_starfinder()
+/obj/item/fluff/ielia_tarot/proc/reset_starfinder()
+	if(!activated)
+		return
+	cut_overlays()
+	icon_state = "ielia_tarot"
 	activated = FALSE
+
+
+/obj/item/clothing/suit/storage/fluff/osborne_suit //Dominian Officers Trench Coat - Osborne Strelitz - sirtoast
+	name = "dominian officer's trench coat"
+	desc = "An Imperial Army trench coat that is used by Dominian officers in colder environments. This one is missing the unit insignia and has the symbol of a military count on its rank collar."
+	icon = 'icons/obj/custom_items/osborne_suit.dmi'
+	icon_override = 'icons/obj/custom_items/osborne_suit.dmi'
+	icon_state = "osborne_suit"
+	item_state = "osborne_suit"
+	contained_sprite = TRUE
+
+
+/obj/item/storage/box/fancy/cigarettes/cigar/brianne_cigarettes //Martian Cigarette Case - Sean Brianne - Zelmana
+	name = "martian cigarette case"
+	desc = "A small, personal cigarette tin. It holds cigarettes similar to a cigarette packet but has some nice flair."
+	icon = 'icons/obj/custom_items/brianne_items.dmi'
+	icon_override = 'icons/obj/custom_items/brianne_items.dmi'
+	icon_state = "brianne_cigarettes"
+	item_state = "brianne_cigarettes"
+	icon_type = "cigarette"
+	can_hold = list(/obj/item/clothing/mask/smokable/cigarette/dromedaryco)
+	cigarette_to_spawn = /obj/item/clothing/mask/smokable/cigarette/dromedaryco
+	contained_sprite = TRUE

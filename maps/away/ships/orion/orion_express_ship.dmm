@@ -25,7 +25,7 @@
 	pixel_y = -1
 	},
 /obj/item/storage/firstaid/adv,
-/obj/item/storage/firstaid/brute,
+/obj/item/storage/firstaid/trauma,
 /obj/item/storage/firstaid/fire,
 /obj/item/storage/firstaid/o2,
 /obj/item/storage/firstaid/toxin,
@@ -1096,7 +1096,7 @@
 "ian" = (
 /obj/structure/table/stone/marble,
 /obj/effect/floor_decal/corner/black/diagonal,
-/obj/item/clothing/suit/chef,
+/obj/item/clothing/suit/chef_jacket,
 /turf/simulated/floor/tiled/white,
 /area/ship/orion_express_ship)
 "ibp" = (
@@ -1749,7 +1749,7 @@
 /obj/item/clothing/suit/storage/toggle/supply_dep_jacket,
 /obj/item/clothing/suit/storage/toggle/bomber,
 /obj/item/clothing/under/shorts/khaki,
-/obj/item/clothing/under/shorts/khaki/female,
+/obj/item/clothing/under/shorts/khaki/short,
 /obj/item/clothing/shoes/workboots/dark,
 /obj/item/clothing/shoes/workboots/toeless/dark,
 /obj/item/clothing/gloves/brown,
@@ -2018,17 +2018,6 @@
 /obj/item/paper_bin,
 /obj/item/pen/multi,
 /turf/simulated/floor/tiled/dark,
-/area/ship/orion_express_ship)
-"pll" = (
-/obj/structure/lattice/catwalk,
-/obj/machinery/access_button{
-	command = "cycle_exterior";
-	frequency = 1380;
-	master_tag = "orion_traveler_port";
-	name = "exterior access button";
-	pixel_y = 32
-	},
-/turf/template_noop,
 /area/ship/orion_express_ship)
 "ppM" = (
 /obj/machinery/atmospherics/unary/vent_pump/high_volume{
@@ -2586,6 +2575,8 @@
 /obj/item/clothing/suit/space/void/engineering,
 /obj/item/clothing/head/helmet/space/void/engineering,
 /obj/item/clothing/head/helmet/space/void/engineering,
+/obj/item/device/gps/engineering,
+/obj/item/device/gps/engineering,
 /turf/simulated/floor/tiled/dark,
 /area/ship/orion_express_ship)
 "sJD" = (
@@ -2906,6 +2897,8 @@
 /obj/item/clothing/suit/space/void/engineering,
 /obj/item/clothing/head/helmet/space/void/engineering,
 /obj/item/clothing/head/helmet/space/void/engineering,
+/obj/item/device/gps/engineering,
+/obj/item/device/gps/engineering,
 /turf/simulated/floor/tiled/dark,
 /area/ship/orion_express_ship)
 "uzX" = (
@@ -2958,6 +2951,13 @@
 	},
 /obj/effect/landmark/entry_point/fore{
 	name = "aft, airlock"
+	},
+/obj/machinery/access_button{
+	command = "cycle_exterior";
+	frequency = 1380;
+	master_tag = "orion_traveler_port";
+	name = "exterior access button";
+	pixel_x = -32
 	},
 /turf/simulated/floor,
 /area/ship/orion_express_ship)
@@ -3049,6 +3049,10 @@
 /obj/item/gun/energy/gun,
 /obj/item/gun/energy/gun,
 /obj/item/gun/energy/rifle,
+/obj/item/clothing/suit/armor/carrier/officer,
+/obj/item/clothing/suit/armor/carrier/officer,
+/obj/item/clothing/head/helmet/security,
+/obj/item/clothing/head/helmet/security,
 /turf/simulated/floor/tiled/dark,
 /area/ship/orion_express_ship)
 "vFS" = (
@@ -3468,6 +3472,7 @@
 	icon_state = "door_locked";
 	id_tag = "orion_traveler_out"
 	},
+/obj/effect/shuttle_landmark/orion_express_ship/nav3,
 /turf/simulated/floor,
 /area/ship/orion_express_ship)
 
@@ -35197,7 +35202,7 @@ qBd
 riA
 riA
 qBd
-soM
+xRX
 xRX
 xRX
 xRX
@@ -35454,7 +35459,7 @@ rrQ
 ppM
 gtw
 hPR
-pll
+xRX
 xRX
 xRX
 xRX
@@ -35711,7 +35716,7 @@ krz
 dYD
 rvq
 vfR
-soM
+xRX
 xRX
 xRX
 xRX
@@ -35968,7 +35973,7 @@ hrj
 rvq
 oEN
 yks
-soM
+xRX
 xRX
 xRX
 xRX
@@ -36225,7 +36230,7 @@ qBd
 riA
 riA
 qBd
-soM
+xRX
 xRX
 xRX
 xRX

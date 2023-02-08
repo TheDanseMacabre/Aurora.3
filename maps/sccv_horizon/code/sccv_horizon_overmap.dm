@@ -3,7 +3,7 @@
 	designation = "Horizon"
 	desc = "A line without compare, the Venator-series consists of one vessel so far: the SCCV Horizon, the lead ship of its class. Designed to be an entirely self-sufficient general-purpose surveying ship and to carry multiple replacement crews simultaneously, the Venator is equipped with both a bluespace and a warp drive and two different engines. Defying typical cruiser dimensions, the Venator is home to a sizable residential deck below the operations deck of the ship, where the crew is housed. It also features weapon hardpoints in its prominent wing nacelles. This one's transponder identifies it, obviously, as the SCCV Horizon."
 	fore_dir = SOUTH
-	vessel_mass = 100000
+	vessel_mass = 70000
 	burn_delay = 2 SECONDS
 	base = TRUE
 
@@ -17,6 +17,8 @@
 	"nav_hangar_horizon_2",
 	"nav_dock_horizon_1",
 	"nav_dock_horizon_2",
+	"nav_dock_horizon_3",
+	"nav_dock_horizon_4",
 	"deck_one_fore_of_horizon",
 	"deck_one_starboard_side",
 	"deck_one_port_side",
@@ -30,16 +32,11 @@
 	"deck_two_port_aft",
 	"deck_two_starboard_aft",
 	"deck_three_fore_of_horizon",
-	"deck_three_starboard_of_horizon",
-	"deck_three_port_of_horizon",
-	"deck_three_aft_of_horizon"
+	"deck_three_fore_starboard_of_horizon",
+	"deck_three_fore_port_of_horizon",
+	"deck_three_aft_of_horizon",
+	"deck_three_aft_port_of_horizon"
 	)
-
-
-/obj/machinery/computer/shuttle_control/explore/intrepid
-	name = "Intrepid control console"
-	shuttle_tag = "Intrepid"
-	req_access = list(access_intrepid)
 
 /obj/effect/overmap/visitable/ship/landable/intrepid
 	name = "Intrepid"
@@ -54,6 +51,11 @@
 	fore_dir = SOUTH
 	vessel_size = SHIP_SIZE_SMALL
 
+/obj/machinery/computer/shuttle_control/explore/intrepid
+	name = "\improper Intrepid control console"
+	shuttle_tag = "Intrepid"
+	req_access = list(access_intrepid)
+
 /obj/effect/overmap/visitable/ship/landable/mining_shuttle
 	name = "Spark"
 	class = "SCCV"
@@ -67,7 +69,7 @@
 	vessel_size = SHIP_SIZE_TINY
 
 /obj/machinery/computer/shuttle_control/explore/mining_shuttle
-	name = "pickaxe control console"
+	name = "\improper Spark control console"
 	shuttle_tag = "Spark"
 	req_access = list(access_mining)
 
@@ -87,12 +89,27 @@
 /obj/effect/shuttle_landmark/horizon/dock1
 	name = "Starboard Primary Docking Arm"
 	landmark_tag = "nav_dock_horizon_1"
+	docking_controller = "dock_horizon_1_airlock"
 	base_turf = /turf/simulated/floor/reinforced/airless
 	base_area = /area/space
 
 /obj/effect/shuttle_landmark/horizon/dock2 //shares a spot with the TCFL ERT shuttle, but having multiple use cases is fine, ERTs are adminspawned only as well
 	name = "Port Primary Docking Arm"
 	landmark_tag = "nav_dock_horizon_2"
+	base_turf = /turf/simulated/floor/reinforced/airless
+	base_area = /area/space
+
+/obj/effect/shuttle_landmark/horizon/dock3
+	name = "Starboard Primary Docking Arm-Fore"
+	landmark_tag = "nav_dock_horizon_3"
+	docking_controller = "dock_horizon_3_airlock"
+	base_turf = /turf/simulated/floor/reinforced/airless
+	base_area = /area/space
+
+/obj/effect/shuttle_landmark/horizon/dock4
+	name = "Port Primary Docking Arm-Fore"
+	landmark_tag = "nav_dock_horizon_4"
+	docking_controller = "dock_horizon_4_airlock"
 	base_turf = /turf/simulated/floor/reinforced/airless
 	base_area = /area/space
 
@@ -166,12 +183,16 @@
 	name = "Deck Three, Fore of Horizon"
 	landmark_tag = "deck_three_fore_of_horizon"
 
-/obj/effect/shuttle_landmark/horizon/deckthree/starboard
+/obj/effect/shuttle_landmark/horizon/deckthree/starboardfore
 	name = "Deck Three, Starboard of Horizon"
-	landmark_tag = "deck_three_starboard_of_horizon"
+	landmark_tag = "deck_three_fore_starboard_of_horizon"
 
-/obj/effect/shuttle_landmark/horizon/deckthree/port
-	name = "Deck Three, Port of Horizon"
+/obj/effect/shuttle_landmark/horizon/deckthree/portfore
+	name = "Deck Three, Starboard of Horizon"
+	landmark_tag = "deck_three_port_fore_of_horizon"
+
+/obj/effect/shuttle_landmark/horizon/deckthree/portaft
+	name = "Deck Three, Aft Port of Horizon"
 	landmark_tag = "deck_three_port_of_horizon"
 
 /obj/effect/shuttle_landmark/horizon/deckthree/aft

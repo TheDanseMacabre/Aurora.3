@@ -1,7 +1,7 @@
 /obj/machinery/ship_weapon/leviathan
 	name = "leviathan zero-point artillery"
 	desc = "A hulking structure made up of an uncalculable amount of moving parts, components and capacitors. It has no branding other than the \"ZAT\" inscription on the sides."
-	icon = 'icons/obj/machines/ship_guns/leviathan.dmi'
+	icon = 'icons/obj/machinery/ship_guns/leviathan.dmi'
 	icon_state = "weapon_off"
 	special_firing_mechanism = TRUE
 	max_damage = 10000
@@ -22,7 +22,7 @@
 /obj/machinery/ship_weapon/leviathan/Destroy()
 	smes = null
 	return ..()
-	
+
 /obj/machinery/ship_weapon/leviathan/LateInitialize()
 	. = ..()
 	couple_to_smes()
@@ -83,11 +83,13 @@
 
 /obj/machinery/ship_weapon/leviathan/disable()
 	firing = FALSE
-	for(var/mob/living/L in living_mob_list)
-		if(get_area(L) == get_area(src))
-			sound_to(L, 'sound/effects/ship_weapons/leviathan_powerdown.ogg')
-	visible_message(SPAN_DANGER("<font size=4>\The [src]'s humming comes to an abrupt halt.</font>"))
-	update_use_power(POWER_USE_OFF)
+	if(use_power != POWER_USE_OFF)
+		visible_message(SPAN_DANGER("<font size=4>\The [src]'s humming comes to an abrupt halt.</font>"))
+		for(var/mob/living/L in living_mob_list)
+			if(AreConnectedZLevels(L.z, z))
+				sound_to(L, 'sound/effects/ship_weapons/leviathan_powerdown.ogg')
+				to_chat(L, SPAN_WARNING("The ground below you settles down, no longer vibrating."))
+		update_use_power(POWER_USE_OFF)
 	icon_state = "weapon_off"
 
 /obj/machinery/ship_weapon/leviathan/enable()
@@ -95,10 +97,11 @@
 	if(!smes)
 		visible_message(SPAN_DANGER("\The [src] doesn't light up at all! Its maintenance display indicates there is no SMES to draw power from."))
 		return
-	for(var/mob/living/L in living_mob_list)
-		if(get_area(L) == get_area(src))
-			sound_to(L, 'sound/effects/ship_weapons/leviathan_powerup.ogg')
 	visible_message(SPAN_DANGER("<font size=4>\The [src] lights up with a powerful hum...</font>"))
+	for(var/mob/living/L in living_mob_list)
+		if(AreConnectedZLevels(L.z, z))
+			sound_to(L, 'sound/effects/ship_weapons/leviathan_powerup.ogg')
+			to_chat(L, SPAN_WARNING("The ground below you starts vibrating with a slight hum..."))
 	update_use_power(POWER_USE_IDLE)
 	icon_state = "weapon_on"
 
@@ -121,6 +124,7 @@
 /obj/item/ship_ammunition/leviathan
 	name = "zero-point artillery beam"
 	desc = "A beam of pure energy."
+	range = OVERMAP_PROJECTILE_RANGE_ULTRAHIGH
 	caliber = SHIP_CALIBER_ZTA
 	impact_type = SHIP_AMMO_IMPACT_ZTA
 	overmap_icon_state = "heavy_pulse"
@@ -128,6 +132,9 @@
 /obj/item/ship_ammunition/leviathan/Initialize()
 	. = ..()
 	set_light(3, 3, LIGHT_COLOR_PURPLE)
+
+/obj/item/ship_ammunition/leviathan/get_speed()
+	return 2
 
 /obj/item/projectile/ship_ammo/leviathan
 	name = "zero-point artillery beam"
@@ -144,7 +151,7 @@
 	impact_type = /obj/effect/projectile/impact/pulse
 
 /obj/item/projectile/ship_ammo/leviathan/on_hit(atom/target, blocked, def_zone, is_landmark_hit)
-	if(!is_landmark_hit)	
+	if(!is_landmark_hit)
 		if(ismob(target))
 			var/mob/M = target
 			M.visible_message(SPAN_DANGER("<font size=6>[M] evaporates as they are engulfed by the beam!</font>"))
@@ -204,13 +211,13 @@
 	name = "leviathan activation key"
 	desc = "A key made of hardlight used to activate the Leviathan. It is a software-controlled morphing key that uses self-replicating encryption: \
 			it cannot be replicated at all. Most importantly, if it is stolen, it can simply be deactivated by the SCC. A marvel of modern technology!"
-	icon = 'icons/obj/machines/ship_guns/zat_confirmation_terminals.dmi'
+	icon = 'icons/obj/machinery/ship_guns/zat_confirmation_terminals.dmi'
 	icon_state = "cannon_key"
 
 /obj/item/leviathan_case
 	name = "leviathan key case"
 	desc = "It contains the Leviathan's activation key. The case is made out of authentic ebony wood, while the cushioning on the inside is made of silk."
-	icon = 'icons/obj/machines/ship_guns/zat_confirmation_terminals.dmi'
+	icon = 'icons/obj/machinery/ship_guns/zat_confirmation_terminals.dmi'
 	icon_state = "key_case"
 	var/open = FALSE
 	var/obj/item/leviathan_key/LK
@@ -236,7 +243,7 @@
 	else
 		user.visible_message(SPAN_NOTICE("[user] closes \the [src]."))
 		icon_state = "key_case"
-	
+
 /obj/item/leviathan_case/attack_hand(mob/user)
 	if(!open || !LK || !ishuman(loc))
 		. = ..()
@@ -260,11 +267,11 @@
 			LK = key
 			user.drop_from_inventory(key, src)
 			icon_state = "key_case-o"
-			
+
 /obj/machinery/leviathan_safeguard
 	name = "leviathan activation terminal"
 	desc = "The terminal used to confirm if you really want to wipe someone out."
-	icon = 'icons/obj/machines/ship_guns/zat_confirmation_terminals.dmi'
+	icon = 'icons/obj/machinery/ship_guns/zat_confirmation_terminals.dmi'
 	icon_state = "safeguard"
 	anchored = TRUE
 	density = TRUE
@@ -287,7 +294,7 @@
 	QDEL_NULL(key)
 	button = null
 	return ..()
-	
+
 /obj/machinery/leviathan_safeguard/LateInitialize()
 	if(current_map.use_overmap && !linked)
 		var/my_sector = map_sectors["[z]"]
@@ -333,7 +340,7 @@
 /obj/machinery/leviathan_button
 	name = "leviathan fire button"
 	desc = "The button that controls the Leviathan's firing mechanism."
-	icon = 'icons/obj/machines/ship_guns/zat_confirmation_terminals.dmi'
+	icon = 'icons/obj/machinery/ship_guns/zat_confirmation_terminals.dmi'
 	icon_state = "button_closed"
 	anchored = TRUE
 	var/open = FALSE

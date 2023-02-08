@@ -2,7 +2,7 @@
 	name = "grauwolf flak battery"
 	desc = "A Kumar Arms flak battery developed in 2461 as part of the same <i>\"Chivalry\"</i> line of the Longbow. Its barrels may look smaller than its significantly larger kin's, \
 			but don't let that fool you: this gun will shred through smaller ships."
-	icon = 'icons/obj/machines/ship_guns/grauwolf.dmi'
+	icon = 'icons/obj/machinery/ship_guns/grauwolf.dmi'
 	heavy_firing_sound = 'sound/weapons/gunshot/ship_weapons/flak_fire.ogg'
 	icon_state = "weapon_base"
 	max_ammo = 5
@@ -17,6 +17,7 @@
 	desc = "A bundle of high-explosive flak shells."
 	icon = 'icons/obj/guns/ship/ship_ammo_flakbox.dmi'
 	icon_state = "bundle_he"
+	overmap_icon_state = "flak"
 	caliber = SHIP_CALIBER_90MM
 	ammunition_behaviour = SHIP_AMMO_BEHAVIOUR_DUMBFIRE
 	projectile_type_override = /obj/item/projectile/ship_ammo/grauwolf

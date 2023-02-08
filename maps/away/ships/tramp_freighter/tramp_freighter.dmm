@@ -339,6 +339,11 @@
 /obj/machinery/atmospherics/binary/pump/high_power,
 /turf/simulated/floor/shuttle/black,
 /area/shuttle/freighter_shuttle)
+"bOP" = (
+/obj/structure/ship_weapon_dummy,
+/obj/structure/ship_weapon_dummy,
+/turf/simulated/floor/airless,
+/area/ship/tramp_freighter)
 "bQB" = (
 /obj/machinery/atmospherics/pipe/simple/hidden,
 /turf/simulated/floor,
@@ -519,6 +524,8 @@
 /obj/item/device/suit_cooling_unit,
 /obj/item/clothing/head/helmet/space/void/mining/fluff,
 /obj/item/device/suit_cooling_unit,
+/obj/item/device/gps/mining,
+/obj/item/device/gps/mining,
 /turf/simulated/floor/tiled/dark,
 /area/ship/tramp_freighter)
 "dmm" = (
@@ -590,6 +597,8 @@
 	dir = 8;
 	icon_state = "tube1"
 	},
+/obj/item/device/gps/mining,
+/obj/item/device/gps/mining,
 /turf/simulated/floor/tiled/dark,
 /area/ship/tramp_freighter)
 "dGM" = (
@@ -658,18 +667,9 @@
 /obj/effect/floor_decal/industrial/outline/red,
 /obj/effect/decal/cleanable/dirt,
 /obj/item/storage/box/shotgunshells,
-/obj/item/storage/box/flashshells,
-/obj/item/gun/projectile/shotgun/doublebarrel,
-/obj/item/storage/box/flashshells,
-/obj/item/storage/box/shotgunshells,
-/obj/item/gun/projectile/shotgun/pump/rifle/pipegun,
-/obj/item/ammo_casing/a556,
-/obj/item/ammo_casing/a556,
-/obj/item/ammo_casing/a556,
-/obj/item/ammo_casing/a556,
-/obj/item/ammo_casing/a556,
-/obj/item/ammo_casing/a556,
-/obj/item/ammo_casing/a556,
+/obj/random/civgun/rifle,
+/obj/random/civgun/rifle,
+/obj/random/civgun/rifle,
 /turf/simulated/floor/tiled/dark,
 /area/ship/tramp_freighter)
 "eiL" = (
@@ -954,6 +954,7 @@
 /obj/item/spacecash/c50,
 /obj/structure/closet,
 /obj/effect/floor_decal/corner/black/diagonal,
+/obj/item/clothing/suit/armor/material/makeshift/plasteel,
 /turf/simulated/floor/tiled/yellow,
 /area/ship/tramp_freighter)
 "fXG" = (
@@ -1004,6 +1005,15 @@
 "gqO" = (
 /turf/simulated/floor/shuttle/black,
 /area/shuttle/freighter_shuttle)
+"guF" = (
+/obj/structure/ship_weapon_dummy,
+/obj/machinery/ship_weapon/francisca{
+	pixel_x = -64;
+	pixel_y = -162;
+	weapon_id = "Tramp Francisca Rotary Gun"
+	},
+/turf/simulated/floor/airless,
+/area/ship/tramp_freighter)
 "gwv" = (
 /obj/effect/landmark/entry_point/port{
 	name = "port hangar"
@@ -1117,7 +1127,7 @@
 /turf/simulated/floor/tiled/white,
 /area/ship/tramp_freighter)
 "hsz" = (
-/obj/machinery/computer/ship/navigation{
+/obj/machinery/computer/ship/targeting{
 	dir = 1
 	},
 /turf/simulated/floor/tiled/dark,
@@ -1243,6 +1253,12 @@
 /obj/item/toy/desk/fan,
 /turf/simulated/floor/tiled/dark,
 /area/ship/tramp_freighter)
+"hWD" = (
+/obj/machinery/ammunition_loader/francisca{
+	weapon_id = "Tramp Francisca Rotary Gun"
+	},
+/turf/simulated/floor/tiled/dark,
+/area/ship/tramp_freighter)
 "hZq" = (
 /obj/machinery/door/airlock/external{
 	frequency = 1380;
@@ -1311,16 +1327,9 @@
 	},
 /obj/effect/floor_decal/industrial/outline/red,
 /obj/effect/decal/cleanable/dirt,
-/obj/item/gun/projectile/tanto,
-/obj/item/ammo_magazine/mc10mm,
-/obj/item/ammo_magazine/mc10mm,
-/obj/item/gun/projectile/leyon,
-/obj/item/ammo_magazine/mc10mm/leyon,
-/obj/item/ammo_magazine/mc10mm/leyon,
-/obj/item/gun/projectile/revolver/detective,
-/obj/item/ammo_magazine/c38,
-/obj/item/ammo_magazine/c38,
-/obj/item/gun/energy/pistol,
+/obj/random/civgun,
+/obj/random/civgun,
+/obj/random/civgun,
 /turf/simulated/floor/tiled/dark,
 /area/ship/tramp_freighter)
 "jgW" = (
@@ -1465,6 +1474,10 @@
 	},
 /turf/simulated/floor,
 /area/ship/tramp_freighter)
+"lwq" = (
+/obj/structure/ship_weapon_dummy,
+/turf/simulated/floor/airless,
+/area/ship/tramp_freighter)
 "lGR" = (
 /obj/effect/floor_decal/industrial/warning{
 	dir = 10
@@ -1540,6 +1553,15 @@
 /obj/machinery/door/airlock/hatch{
 	name = "Cargo Compartment"
 	},
+/turf/simulated/floor,
+/area/ship/tramp_freighter)
+"nHp" = (
+/obj/effect/floor_decal/industrial/outline/yellow,
+/obj/machinery/light{
+	dir = 8;
+	icon_state = "tube1"
+	},
+/obj/structure/closet/crate/freezer/rations,
 /turf/simulated/floor,
 /area/ship/tramp_freighter)
 "nHD" = (
@@ -1702,6 +1724,20 @@
 	icon_state = "tube1"
 	},
 /turf/simulated/floor/tiled/white,
+/area/ship/tramp_freighter)
+"qpc" = (
+/obj/effect/floor_decal/industrial/outline/yellow,
+/obj/structure/closet/crate,
+/obj/item/ship_ammunition/francisca/ap,
+/obj/item/ship_ammunition/francisca/ap,
+/obj/item/ship_ammunition/francisca/ap,
+/turf/simulated/floor,
+/area/ship/tramp_freighter)
+"qpg" = (
+/obj/structure/ship_weapon_dummy{
+	is_barrel = 1
+	},
+/turf/simulated/floor/airless,
 /area/ship/tramp_freighter)
 "que" = (
 /obj/effect/step_trigger/teleporter,
@@ -1934,6 +1970,17 @@
 	},
 /turf/simulated/floor/tiled/dark,
 /area/ship/tramp_freighter)
+"uqZ" = (
+/obj/effect/floor_decal/industrial/outline/yellow,
+/obj/structure/closet/crate,
+/obj/item/ship_ammunition/francisca,
+/obj/item/ship_ammunition/francisca,
+/obj/item/ship_ammunition/francisca,
+/obj/item/ship_ammunition/francisca,
+/obj/item/ship_ammunition/francisca,
+/obj/item/ship_ammunition/francisca,
+/turf/simulated/floor,
+/area/ship/tramp_freighter)
 "uCl" = (
 /obj/structure/closet,
 /obj/item/clothing/suit/storage/toggle/bomber,
@@ -1963,6 +2010,7 @@
 /obj/item/clothing/gloves/fingerless,
 /obj/item/clothing/gloves/fingerless,
 /obj/item/clothing/suit/storage/toggle/leather_jacket/flight,
+/obj/item/clothing/suit/armor/material/makeshift/plasteel,
 /turf/simulated/floor/tiled/yellow,
 /area/ship/tramp_freighter)
 "uDF" = (
@@ -30261,11 +30309,11 @@ xRX
 xRX
 xRX
 xRX
-xRX
-xRX
-xRX
-xRX
-xRX
+lwq
+bOP
+lwq
+lwq
+qpg
 xRX
 xRX
 xRX
@@ -30518,8 +30566,8 @@ xRX
 xRX
 xRX
 xRX
-xRX
-xRX
+guF
+lwq
 xRX
 xRX
 xRX
@@ -30773,10 +30821,10 @@ ylV
 ylV
 ylV
 ylV
-xRX
-xRX
-xRX
-xRX
+ylV
+ylV
+hWD
+ylV
 xRX
 xRX
 xRX
@@ -31021,18 +31069,18 @@ aSi
 aCu
 gMG
 bci
-dmm
+nHp
 bci
 hlD
 fji
 aSi
 bci
-aSi
+dmm
 bci
+aSJ
 ylV
-ylV
-ylV
-ylV
+jfa
+lfq
 ylV
 xRX
 xRX
@@ -31280,16 +31328,16 @@ ktI
 aCu
 ktI
 fji
-sDf
+ktI
 bci
 hCv
 bci
-wZp
+uqZ
 fji
 aSJ
 ylV
 ehI
-jfa
+lfq
 ylV
 ylV
 wYA
@@ -31539,9 +31587,9 @@ ktI
 fji
 ktI
 bci
-sDf
-bci
 wZp
+bci
+qpc
 eTq
 sLj
 fXG
