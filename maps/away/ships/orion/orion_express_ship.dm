@@ -1,16 +1,16 @@
 /datum/map_template/ruin/away_site/orion_express_ship
 	name = "Orion Express Mobile Station"
-	description = "The Traveler-class mobile station is a relatively old design, but nonetheless venerable and one of the building blocks of interstellar commerce. While relatively small, is a treasured asset in the Orion Express corporation's fleet, and has been referred to as “the gas station of the stars”, offering food, supplies, and fuel to anyone who may need it. This one's transponder identifies it as an Orion Express refueling station."
-	suffix = "ships/orion/orion_express_ship.dmm"
-	sectors = list(SECTOR_TAU_CETI, SECTOR_ROMANOVICH, SECTOR_CORP_ZONE, SECTOR_VALLEY_HALE)
+	description = "The Traveler-class mobile station is a relatively old design, but nonetheless venerable and one of the building blocks of interstellar commerce. While relatively small, is a treasured asset in the Orion Express corporation's fleet, and has been referred to as “the gas station of the stars”, offering food, supplies, and fuel to anyone who may need it."
+	suffixes = list("ships/orion/orion_express_ship.dmm")
+	sectors = list(SECTOR_TAU_CETI, SECTOR_ROMANOVICH, SECTOR_CORP_ZONE, SECTOR_VALLEY_HALE, SECTOR_BADLANDS, SECTOR_SRANDMARR)
 	spawn_weight = 1
-	spawn_cost = 1
+	ship_cost = 1
 	id = "orion_express_ship"
 	shuttles_to_initialise = list(/datum/shuttle/autodock/overmap/orion_express_shuttle)
 
-/decl/submap_archetype/orion_express_ship
+/singleton/submap_archetype/orion_express_ship
 	map = "Orion Express Mobile Station"
-	descriptor = "The Traveler-class mobile station is a relatively old design, but nonetheless venerable and one of the building blocks of interstellar commerce. While relatively small, is a treasured asset in the Orion Express corporation's fleet, and has been referred to as “the gas station of the stars”, offering food, supplies, and fuel to anyone who may need it. This one's transponder identifies it as an Orion Express refueling station."
+	descriptor = "The Traveler-class mobile station is a relatively old design, but nonetheless venerable and one of the building blocks of interstellar commerce. While relatively small, is a treasured asset in the Orion Express corporation's fleet, and has been referred to as “the gas station of the stars”, offering food, supplies, and fuel to anyone who may need it."
 
 //areas
 /area/ship/orion_express_ship
@@ -25,9 +25,11 @@
 /obj/effect/overmap/visitable/ship/orion_express_ship
 	name = "Orion Express Mobile Station"
 	class = "OEV"
-	desc = "The Traveler-class mobile station is a relatively old design, but nonetheless venerable and one of the building blocks of interstellar commerce. While relatively small, is a treasured asset in the Orion Express corporation's fleet, and has been referred to as “the gas station of the stars”, offering food, supplies, and fuel to anyone who may need it. This one's transponder identifies it as an Orion Express refueling station."
-	icon_state = "shuttle"
-	moving_state = "shuttle_moving"
+	desc = "The Traveler-class mobile station is a relatively old design, but nonetheless venerable and one of the building blocks of interstellar commerce. While relatively small, is a treasured asset in the Orion Express corporation's fleet, and has been referred to as “the gas station of the stars”, offering food, supplies, and fuel to anyone who may need it."
+	icon = 'icons/obj/overmap/overmap_stationary.dmi'
+	icon_state = "waystation"
+	moving_state = "waystation"
+	colors = list("#a1a8e2", "#818be0")
 	max_speed = 1/(2 SECONDS)
 	burn_delay = 1 SECONDS
 	vessel_mass = 5000
@@ -39,7 +41,8 @@
 
 	initial_generic_waypoints = list(
 		"nav_orion_express_ship_1",
-		"nav_orion_express_ship_2"
+		"nav_orion_express_ship_2",
+		"nav_orion_express_ship_3"
 	)
 
 /obj/effect/overmap/visitable/ship/orion_express_ship/New()
@@ -58,6 +61,13 @@
 	base_turf = /turf/space/dynamic
 	base_area = /area/space
 
+/obj/effect/shuttle_landmark/orion_express_ship/nav3
+	name = "Orion Express Mobile Station - Aft Airlock"
+	landmark_tag = "nav_orion_express_ship_3"
+	docking_controller = "orion_traveler_port"
+	base_area = /area/space
+	base_turf = /turf/space/dynamic
+
 /obj/effect/shuttle_landmark/orion_express_ship/transit
 	name = "In transit"
 	landmark_tag = "nav_transit_orion_express_ship"
@@ -70,6 +80,9 @@
 	designation = "Packmaster"
 	desc = "The Troubadour-class skiff is not quite an independent design, and is instead essentially a component of the larger Traveler-class station as a whole, seamlessly attaching and detaching for operations as is necessary. This one's transponder identifies it as part of an Orion Express refueling station."
 	shuttle = "Orion Express Shuttle"
+	icon_state = "shuttle"
+	moving_state = "shuttle_moving"
+	colors = list("#a1a8e2", "#818be0")
 	max_speed = 1/(3 SECONDS)
 	burn_delay = 2 SECONDS
 	vessel_mass = 3000 //very inefficient pod
@@ -90,12 +103,13 @@
 	range = 1
 	fuel_consumption = 2
 	logging_home_tag = "nav_hangar_orion_express"
+	dock_target = "orion_express_shuttle"
 	defer_initialisation = TRUE
 
 /obj/effect/shuttle_landmark/orion_express_shuttle/hangar
 	name = "Orion Express Shuttle Hangar"
 	landmark_tag = "nav_hangar_orion_express"
-	docking_controller = "orion_express_shuttle_dock"
+	docking_controller = "orion_traveler_n_port"
 	base_area = /area/ship/orion_express_ship
 	base_turf = /turf/simulated/floor/plating
 	movable_flags = MOVABLE_FLAG_EFFECTMOVE

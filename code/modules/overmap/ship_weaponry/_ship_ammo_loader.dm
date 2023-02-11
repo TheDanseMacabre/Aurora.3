@@ -1,10 +1,12 @@
 /obj/machinery/ammunition_loader
 	name = "ammunition loader"
 	desc = "An ammunition loader for ship weapons systems. All hands to battlestations!"
-	icon = 'icons/obj/machines/ship_guns/ship_weapon_attachments.dmi'
+	icon = 'icons/obj/machinery/ship_guns/ship_weapon_attachments.dmi'
 	icon_state = "ammo_loader"
 	density = TRUE
 	anchored = TRUE
+	var/damage = 0
+	var/max_damage = 1000
 	var/obj/machinery/ship_weapon/weapon
 	var/weapon_id //Used to connect weapon systems to the relevant ammunition loader.
 
@@ -22,6 +24,23 @@
 	if(!weapon)
 		crash_with("[src] at [x] [y] [z] has no weapon attached!")
 
+/obj/machinery/ammunition_loader/ex_act(severity)
+	switch(severity)
+		if(1)
+			add_damage(50)
+		if(2)
+			add_damage(25)
+		if(3)
+			add_damage(10)
+
+/obj/machinery/ammunition_loader/proc/add_damage(var/amount)
+	damage = max(0, min(damage + amount, max_damage))
+	update_damage()
+
+/obj/machinery/ammunition_loader/proc/update_damage()
+	if(damage >= max_damage)
+		qdel(src)
+
 /obj/machinery/ammunition_loader/attackby(obj/item/W, mob/user)
 	if(isliving(user))
 		var/mob/living/carbon/human/H = user
@@ -32,6 +51,9 @@
 		var/mob/living/heavy_vehicle/HV = user
 		if(istype(W, /obj/item/mecha_equipment/clamp))
 			var/obj/item/mecha_equipment/clamp/CL = W
+			if(!length(CL.carrying))
+				to_chat(user, SPAN_WARNING("\The [CL] is empty."))
+				return TRUE
 			if(istype(CL.carrying[1], /obj/item/ship_ammunition))
 				var/obj/item/ship_ammunition/SA = CL.carrying[1]
 				return load_ammo(SA, HV)
@@ -70,7 +92,7 @@
 /obj/structure/viewport
 	name = "viewport"
 	desc = "A viewport for some sort of ship-mounted weapon. You can see your enemies blow up into many, many bits and pieces from here."
-	icon = 'icons/obj/machines/ship_guns/ship_weapon_attachments.dmi'
+	icon = 'icons/obj/machinery/ship_guns/ship_weapon_attachments.dmi'
 	icon_state = "viewport_generic"
 	density = TRUE
 	opacity = FALSE
@@ -79,3 +101,6 @@
 
 /obj/structure/viewport/zavod
 	icon_state = "viewport_zavod"
+
+/obj/structure/viewport/unathi
+	icon_state = "viewport_unathi"

@@ -12,8 +12,9 @@
 #define OUTFIT_GENERIC 2
 #define OUTFIT_FACTIONSPECIFIC 3
 
-#define OUTFIT_NORMAL 2
-#define OUTFIT_THICK 3
+#define OUTFIT_THIN 2
+#define OUTFIT_NORMAL 3
+#define OUTFIT_THICK 4
 
 #define OUTFIT_BLUE 2
 #define OUTFIT_GREEN 3
@@ -214,13 +215,15 @@
 					B.color = "#3d2711"
 		else
 			B.color = null
-		switch (H.backbag_strap)
-			if (OUTFIT_NOTHING)
+		switch(H.backbag_strap)
+			if(OUTFIT_NOTHING)
 				B.alpha_mask = "hidden"
-			if (OUTFIT_THICK)
-				B.alpha_mask = null
-			if (OUTFIT_NORMAL)
+			if(OUTFIT_THIN)
+				B.alpha_mask = "thin"
+			if(OUTFIT_NORMAL)
 				B.alpha_mask = "normal"
+			if(OUTFIT_THICK)
+				B.alpha_mask = null
 		if(isvaurca(H, TRUE))
 			H.equip_or_collect(B, slot_r_hand)
 		else
@@ -397,21 +400,21 @@
 		var/obj/item/I = new pda(H)
 		switch(H.pda_choice)
 			if(OUTFIT_TAB_PDA)
-				I.desc_fluff += "For its many years of service, this model has held a virtual monopoly for PDA models for NanoTrasen. The secret? A lapel pin affixed to the back."
+				I.desc_extended += "For its many years of service, this model has held a virtual monopoly for PDA models for NanoTrasen. The secret? A lapel pin affixed to the back."
 			if(OUTFIT_PDA_OLD)
 				I.icon = 'icons/obj/pda_old.dmi'
-				I.desc_fluff += "Nicknamed affectionately as the 'Brick', PDA enthusiasts rejoice with the return of an old favorite, retrofitted to new modular computing standards."
+				I.desc_extended += "Nicknamed affectionately as the 'Brick', PDA enthusiasts rejoice with the return of an old favorite, retrofitted to new modular computing standards."
 			if(OUTFIT_PDA_RUGGED)
 				I.icon = 'icons/obj/pda_rugged.dmi'
-				I.desc_fluff += "EVA enthusiasts and owners of fat fingers just LOVE the huge tactile buttons provided by this model. Prone to butt-dialing, but don't let that hold you back."
+				I.desc_extended += "EVA enthusiasts and owners of fat fingers just LOVE the huge tactile buttons provided by this model. Prone to butt-dialing, but don't let that hold you back."
 			if(OUTFIT_PDA_SLATE)
 				I.icon = 'icons/obj/pda_slate.dmi'
-				I.desc_fluff += "A bet between an engineer and a disgruntled scientist, it turns out you CAN make a PDA out of an atmospherics scanner. Also, probably don't tell management, just enjoy."
+				I.desc_extended += "A bet between an engineer and a disgruntled scientist, it turns out you CAN make a PDA out of an atmospherics scanner. Also, probably don't tell management, just enjoy."
 			if(OUTFIT_PDA_SMART)
 				I.icon = 'icons/obj/pda_smart.dmi'
-				I.desc_fluff += "NanoTrasen originally designed this as a portable media player. Unfortunately, Royalty-free and corporate-approved ukulele isn't particularly popular."
+				I.desc_extended += "NanoTrasen originally designed this as a portable media player. Unfortunately, Royalty-free and corporate-approved ukulele isn't particularly popular."
 		I.update_icon()
-		if (H.pda_choice == OUTFIT_WRISTBOUND)
+		if(!H.wrists && H.pda_choice == OUTFIT_WRISTBOUND)
 			H.equip_or_collect(I, slot_wrists)
 		else
 			H.equip_or_collect(I, slot_wear_id)
@@ -422,23 +425,41 @@
 		if(r_pocket)
 			equip_item(H, r_pocket, slot_r_store)
 
-		for(var/path in backpack_contents)
-			var/number = backpack_contents[path]
-			for(var/i in 1 to number)
-				H.equip_or_collect(new path(H), slot_in_backpack)
+		if(H.back) // you would think, right
+			for(var/path in backpack_contents)
+				var/number = backpack_contents[path]
+				for(var/i in 1 to number)
+					H.equip_or_collect(new path(H), slot_in_backpack)
+		else
+			var/obj/item/storage/storage_item
+			if(!H.l_hand)
+				storage_item = new /obj/item/storage/bag/plasticbag(H)
+				H.equip_to_slot_or_del(storage_item, slot_l_hand)
+			if(!storage_item && !H.r_hand)
+				storage_item = new /obj/item/storage/bag/plasticbag(H)
+				H.equip_to_slot_or_del(storage_item, slot_r_hand)
+			if(storage_item)
+				for(var/path in backpack_contents)
+					var/number = backpack_contents[path]
+					for(var/i in 1 to number)
+						storage_item.handle_item_insertion(new path(H.loc), TRUE)
 		for(var/path in belt_contents)
 			var/number = belt_contents[path]
 			for(var/i in 1 to number)
 				H.equip_or_collect(new path(H), slot_in_belt)
 
 		if(id)
-			var/obj/item/modular_computer/P = H.wear_id
-			var/obj/item/I = new id(H)
-			imprint_idcard(H,I)
-			if(istype(P) && P.card_slot)
-				addtimer(CALLBACK(src, .proc/register_pda, P, I), 2 SECOND)
+			var/obj/item/modular_computer/personal_computer
+			if(istype(H.wear_id, /obj/item/modular_computer))
+				personal_computer = H.wear_id
+			else if(istype(H.wrists, /obj/item/modular_computer))
+				personal_computer = H.wrists
+			var/obj/item/ID = new id(H)
+			imprint_idcard(H, ID)
+			if(personal_computer?.card_slot)
+				addtimer(CALLBACK(src, PROC_REF(register_pda), personal_computer, ID), 2 SECOND)
 			else
-				H.equip_or_collect(I, slot_wear_id)
+				H.equip_or_collect(ID, slot_wear_id)
 
 	post_equip(H, visualsOnly)
 
@@ -534,7 +555,7 @@
 		C.access = get_id_access(H)
 		C.rank = get_id_rank(H)
 		C.assignment = get_id_assignment(H)
-		addtimer(CALLBACK(H, /mob/.proc/set_id_info, C), 1 SECOND)	// Delay a moment to allow an icon update to happen.
+		addtimer(CALLBACK(H, TYPE_PROC_REF(/mob, set_id_info), C), 1 SECOND)	// Delay a moment to allow an icon update to happen.
 
 		if(H.mind && H.mind.initial_account)
 			C.associated_account_number = H.mind.initial_account.account_number

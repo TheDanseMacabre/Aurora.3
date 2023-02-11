@@ -24,6 +24,13 @@
 
 	job_species_blacklist = list(
 		"Corporate Liaison" = list(
+			SPECIES_IPC,
+			SPECIES_IPC_G1,
+			SPECIES_IPC_G2,
+			SPECIES_IPC_XION,
+			SPECIES_IPC_ZENGHU,
+			SPECIES_IPC_BISHOP,
+			SPECIES_IPC_SHELL,
 			SPECIES_TAJARA,
 			SPECIES_TAJARA_MSAI,
 			SPECIES_TAJARA_ZHAN,
@@ -80,7 +87,7 @@
 	name = "Investigator - Idris"
 
 	uniform = /obj/item/clothing/under/det/idris
-	suit = /obj/item/clothing/suit/storage/det_jacket/idris
+	suit = /obj/item/clothing/suit/storage/security/investigator/idris
 	id = /obj/item/card/id/idris/sec
 
 	backpack_faction = /obj/item/storage/backpack/idris
@@ -116,7 +123,7 @@
 	name = "Chef - Idris"
 
 	uniform = /obj/item/clothing/under/rank/chef/idris
-	suit = /obj/item/clothing/suit/chef/idris
+	suit = /obj/item/clothing/suit/chef_jacket/idris
 	head = /obj/item/clothing/head/chefhat/idris
 	id = /obj/item/card/id/idris
 
@@ -183,7 +190,6 @@
 	head = /obj/item/clothing/head/beret/corporate/idris
 	uniform = /obj/item/clothing/under/rank/liaison/idris
 	suit = /obj/item/clothing/suit/storage/liaison/idris
-	implants = null
 	id = /obj/item/card/id/idris
 	accessory = /obj/item/clothing/accessory/tie/corporate/idris
 	suit_accessory = /obj/item/clothing/accessory/pin/corporate/idris

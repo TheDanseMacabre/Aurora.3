@@ -1,7 +1,7 @@
 /obj/machinery/ship_weapon/francisca
 	name = "francisca rotary gun"
 	desc = "A Kumar Arms rotary gun developed in 2461. While its barrels may be smaller than its significantly larger kin's, the Longbow's, don't let that fool you: this gun will shred through smaller ships."
-	icon = 'icons/obj/machines/ship_guns/francisca.dmi'
+	icon = 'icons/obj/machinery/ship_guns/francisca.dmi'
 	heavy_firing_sound = 'sound/weapons/gunshot/ship_weapons/rotary_fire.ogg'
 	icon_state = "weapon_base"
 	max_ammo = 3
@@ -18,6 +18,7 @@
 	desc = "A box of FMJ bullets for use in a Francisca rotary gun."
 	icon = 'icons/obj/guns/ship/ship_ammo_rotary.dmi'
 	icon_state = "box_fmj"
+	overmap_icon_state = "cannon_salvo"
 	impact_type = SHIP_AMMO_IMPACT_FMJ
 	ammunition_flags = SHIP_AMMO_FLAG_INFLAMMABLE|SHIP_AMMO_FLAG_VERY_HEAVY|SHIP_AMMO_FLAG_INFLAMMABLE
 	caliber = SHIP_CALIBER_40MM
