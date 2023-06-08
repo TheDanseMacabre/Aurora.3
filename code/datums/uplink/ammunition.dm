@@ -60,9 +60,9 @@
 
 /datum/uplink_item/item/ammo/lmg_drum
 	name = "7.62 LMG drum"
-	item_cost = 5
+	item_cost = 8
 	path = /obj/item/ammo_magazine/a762
-	desc = "Contains 50 rounds of 7.62."
+	desc = "Contains 100 rounds of 7.62."
 
 /datum/uplink_item/item/ammo/peac
 	name = "Anti-materiel Cannon Cartridge"

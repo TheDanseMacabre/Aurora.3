@@ -382,7 +382,7 @@
 	w_class = ITEMSIZE_LARGE
 	force = 10
 	slot_flags = 0
-	max_shells = 50
+	max_shells = 100
 	caliber = "a762"
 	origin_tech = list(TECH_COMBAT = 6, TECH_MATERIAL = 1, TECH_ILLEGAL = 2)
 	slot_flags = SLOT_BACK
