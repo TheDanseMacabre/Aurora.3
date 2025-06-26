@@ -356,15 +356,13 @@
 	written_style = "solcommon"
 	key = "1"
 	flags = WHITELISTED | TCOMSSIM
-	syllables = list("a", "abe", "ade", "ai", "an", "ana", "ba", "bae", "bai", "bang", "bao", "bei", "ben", "beo", "bi", "bian", "bing", "bo", "bu", "bugu", "bun", "cai", "can", "cao", "cau", "chan", "chen", "cheong",
-	"chiu", "chong", "chyo", "da", "dan", "dao", "de", "deun", "duo", "eon", "eun", "eusi", "feng", "fu", "ga", "gak", "gan", "gang", "gao", "ge", "gei", "gen", "geo", "gil", "go", "gou", "gu", "gua", "gui", "gul",
-	"gun", "guo", "gwi", "ha", "hai", "hal", "han", "hap", "hara", "he", "hego", "hen", "hon", "hoo", "hu", "hua", "hun", "hyeong", "i", "jae", "jeo", "jeon", "ji", "jia", "jian", "jiang", "jie", "jong", "ju", "jue",
-	"juede", "jung", "juzi", "ka", "kang", "kawa", "ke", "keun", "ki", "kin", "ko", "kore", "kou", "ku", "kuda", "kun", "kyu", "lang", "lao", "leng", "leung", "li", "lian", "liang", "lie", "ling", "lizi", "lleo", "long",
-	"lu", "ma", "mah", "me", "mei", "meinu", "men", "meng", "meog", "meoni", "mi", "mian", "min", "mo", "mot", "mu", "mun", "na", "nae", "nai", "nari", "ne", "ni", "nii", "nim", "nin", "no", "nop", "nu", "o", "oba", "oga", "oji",
-	"oka", "ong", "op", "oto", "pa", "pai", "pang", "pin", "ping", "pong", "pu", "pum", "pye", "qi", "qie", "qing", "ra", "rei", "ren", "ri", "ru", "ruan", "sa", "sai", "sama", "san", "sang", "se", "sei", "sen", "seo", "seon", "seong",
-	"shang", "shen", "sheng", "shi", "sho", "shui", "si", "su", "sui", "sum", "sun", "swi", "ta", "tae", "tai", "tame", "tamen", "tan", "te", "tei", "ti", "tian", "to", "ton", "tsu", "ul", "wa", "wan", "wang", "wei", "wo", "xi", "xian",
-	"xiao", "xing", "xiong", "xiu", "xu", "xuan", "xue", "ya", "yan", "yang", "yeong", "yi", "yige", "yin", "ying", "yiqi", "yong", "you", "yu", "yuli", "yuyi", "zai", "zao", "zhan", "zhang", "zhe", "zhen", "zheng", "zhuo", "zi", "zo",
-	"zu", "zun", "zuo")
+	syllables = list("ba", "be", "bi", "bo", "bu", "va", "ve", "vi", "vo", "vu", "pa", "pe", "pi", "po", "pu", "fa", "fe", "fi", "fo", "fu", "da", "de", "di", "do", "du", "ta", "te", "ti", "to", "tu",
+	"ka", "ke", "ki", "ko", "ku", "ga", "ge", "gi", "go", "gu", "za", "ze", "zi", "zo", "zu", "sa", "se", "si", "so", "su", "ma", "me", "mi", "mo", "mu", "na", "ne", "ni", "no", "nu", "la", "le", "li", "lo", "lu", "ra", "re", "ri", "ro", "ru",
+	"ja", "je", "ji", "jo", "ju", "cha", "che", "chi", "cho", "chu", "sha", "she", "shi", "sho", "shu", "zha", "zhe", "zhi", "zho", "zhu", "kra", "kre", "kri", "kro", "kru", "pra", "pre", "pri", "pro", "pru",
+	"tra", "tre", "tri", "tro", "tru", "bra", "bre", "bri", "bro", "bru", "gra", "gre", "gri", "gro", "gru", "dži", "džo", "džu", "šč", "sč", "rj", "lj", "nj", "tj", "dj",
+	"sla", "sle", "sli", "slo", "slu", "dla", "dle", "dli", "dlo", "dlu", "zna", "zne", "zni", "zno", "znu", "vla", "vle", "vli", "vlo", "vlu", "dža", "dže", "dži", "džo", "džu", "šč", "sč", "rj", "lj", "nj", "tj", "dj",
+	"sz", "cz", "rz", "wio", "mio", "brze", "prze", "dzia", "chło", "śni", "łę", "dzi", "mię", "pię", "sła", "ńska", "żo", "łek", "sch", "tz", "kr", "st", "burg", "heim", "feld", "dach", "wolf", "zwei",
+	"brück", "bach", "stein", "wald", "dorf", "gyo", "szö", "tár", "vá", "gyá", "kert", "ház", "lak", "nád", "szeg", "csé", "pusz", "pest", "köz", "vár", "őr", "fül")
 	allow_accents = TRUE
 
 /datum/language/human/get_random_name(var/gender)
